@@ -1,10 +1,211 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>AI Video Maker</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Video Maker</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      background: #0b0b12;
+      color: white;
+      min-height: 100vh;
+      padding: 30px 15px;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: auto;
+    }
+
+    .header {
+      text-align: center;
+      margin-bottom: 35px;
+    }
+
+    .header h1 {
+      font-size: 38px;
+      margin-bottom: 10px;
+    }
+
+    .header p {
+      color: #aaa;
+      font-size: 16px;
+    }
+
+    .card {
+      background: #15151f;
+      border: 1px solid #292936;
+      border-radius: 18px;
+      padding: 25px;
+      margin-bottom: 20px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 10px;
+      font-weight: bold;
+    }
+
+    textarea {
+      width: 100%;
+      height: 180px;
+      background: #0d0d14;
+      color: white;
+      border: 1px solid #333342;
+      border-radius: 12px;
+      padding: 15px;
+      font-size: 16px;
+      resize: vertical;
+      outline: none;
+    }
+
+    textarea:focus {
+      border-color: #7c5cff;
+    }
+
+    .options {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 15px;
+      margin-top: 20px;
+    }
+
+    select {
+      width: 100%;
+      padding: 13px;
+      background: #0d0d14;
+      color: white;
+      border: 1px solid #333342;
+      border-radius: 10px;
+      font-size: 15px;
+    }
+
+    .generate {
+      width: 100%;
+      margin-top: 25px;
+      padding: 16px;
+      border: none;
+      border-radius: 12px;
+      background: #7c5cff;
+      color: white;
+      font-size: 18px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .generate:hover {
+      opacity: 0.9;
+    }
+
+    .status {
+      text-align: center;
+      margin-top: 20px;
+      color: #aaa;
+      display: none;
+    }
+
+    @media (max-width: 600px) {
+      .options {
+        grid-template-columns: 1fr;
+      }
+
+      .header h1 {
+        font-size: 30px;
+      }
+    }
+  </style>
 </head>
+
 <body>
-    <h1>AI Video Maker 🎬</h1>
-    <p>අපේ AI Video Website එකට සාදරයෙන් පිළිගන්නවා!</p>
+
+  <div class="container">
+
+    <div class="header">
+      <h1>🎬 AI Video Maker</h1>
+      <p>Create cinematic AI videos from your story</p>
+    </div>
+
+    <div class="card">
+
+      <label for="story">📝 Your Story</label>
+
+      <textarea id="story"
+        placeholder="Write your story here...&#10;&#10;Example: A poor orange cat goes to work while his wife waits at home..."></textarea>
+
+      <div class="options">
+
+        <div>
+          <label>🎨 Style</label>
+          <select id="style">
+            <option>Cinematic 3D Animation</option>
+            <option>Realistic 3D</option>
+            <option>Cartoon</option>
+            <option>Anime</option>
+          </select>
+        </div>
+
+        <div>
+          <label>📱 Aspect Ratio</label>
+          <select id="ratio">
+            <option>9:16 Vertical</option>
+            <option>16:9 Landscape</option>
+            <option>1:1 Square</option>
+          </select>
+        </div>
+
+        <div>
+          <label>⏱️ Duration</label>
+          <select id="duration">
+            <option>10 Seconds</option>
+            <option>15 Seconds</option>
+            <option>30 Seconds</option>
+          </select>
+        </div>
+
+        <div>
+          <label>🎥 Quality</label>
+          <select id="quality">
+            <option>High Quality</option>
+            <option>Standard</option>
+          </select>
+        </div>
+
+      </div>
+
+      <button class="generate" onclick="generateVideo()">
+        ✨ Generate Video
+      </button>
+
+      <div class="status" id="status">
+        Preparing your video... 🎬
+      </div>
+
+    </div>
+
+  </div>
+
+  <script>
+    function generateVideo() {
+      const story = document.getElementById("story").value.trim();
+      const status = document.getElementById("status");
+
+      if (!story) {
+        alert("Please write your story first!");
+        return;
+      }
+
+      status.style.display = "block";
+      status.innerText = "🎬 Your AI video is being prepared...";
+    }
+  </script>
+
 </body>
 </html>
